@@ -4,10 +4,15 @@ import Map from "../components/Map";
 import SearchBar from "../components/SearchBar";
 import RouteList from "../components/RouteList";
 import BusTracker from "../components/BusTracker";
-import AddBus from "../components/AddBus"; // ✅ Import AddBus Component
+import AddBus from "../components/AddBus"; 
 
 const Dashboard = ({ user, onLogout }) => {
   const [route, setRoute] = useState(null);
+
+  const handleLogoutClick = () => {
+    console.log("Logout button clicked");
+    onLogout();
+  };
 
   return (
     <div className="app-container">
@@ -18,7 +23,7 @@ const Dashboard = ({ user, onLogout }) => {
         </div>
         <div className="user-section">
           <span className="user-name">Welcome, {user?.name}</span>
-          <button className="logout-button" onClick={onLogout}>
+          <button className="logout-button" onClick={handleLogoutClick}>
             <LogOut size={20} />
             <span>Logout</span>
           </button>
@@ -30,7 +35,7 @@ const Dashboard = ({ user, onLogout }) => {
           <SearchBar onSearch={setRoute} />
           <RouteList />
           <BusTracker />
-          <AddBus /> {/* ✅ Add Bus Form */}
+          <AddBus />
         </div>
         <Map route={route} />
       </div>

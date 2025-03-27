@@ -120,25 +120,11 @@ function App() {
 
   return (
     <Router>
-      <Routes>
-        <Route 
-          path="/" 
-          element={
-            isAuthenticated ? 
-              <Navigate to="/dashboard" /> : 
-              <WelcomePage onLogin={handleLogin} onSignup={handleSignup} />
-          } 
-        />
-        <Route 
-          path="/dashboard" 
-          element={
-            isAuthenticated ? 
-              <Dashboard user={user} onLogout={handleLogout} /> : 
-              <Navigate to="/" />
-          } 
-        />
-      </Routes>
-    </Router>
+    <Routes>
+      <Route path="/" element={<WelcomePage onLogin={handleLogin} onSignup={handleSignup} />} />
+      <Route path="/dashboard" element={<Dashboard user={user} onLogout={handleLogout} />} />
+    </Routes>
+  </Router>
   );
 }
 
